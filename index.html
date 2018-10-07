@@ -10,6 +10,7 @@
   <link rel='stylesheet' href='https://npmcdn.com/basscss@8.0.1/css/basscss.min.css'>
 
       <link rel="stylesheet" href="css/style.css">
+      <script src="https://cdn.jsdelivr.net/gh/ethereum/web3.js/dist/web3.min.js"></script>
 
 
 </head>
@@ -17,10 +18,36 @@
 <body>
 
   <html>
+
   <head>
   </head>
   <body>
     <header class="flex items-center">
+
+      <script language="javascript">
+        function initElement() {
+          var p = document.getElementByClass("heart");
+          // NOTE: showAlert(); or showAlert(param); will NOT work here.
+          // Must be a reference to a function name, not a function call.
+          p.onclick = showAlert;
+        };
+
+        function showAlert(event) {
+          console.log(web3);
+          console.log(web3.eth);
+          console.log(web3.eth.accounts);
+          console.log(web3.eth.accounts[0]);
+          var receiver = "0x541209bd9C60cDb11A5076b785ba1BD44cd15768";  
+          var sender = web3.eth.accounts[0];
+          web3.eth.sendTransaction({to:receiver,
+              from:sender, 
+             value:web3.toWei("0.00005", "ether")}
+              ,function (err, res){});
+        }
+        
+      </script>
+
+
       <div class="flex items-center justify-center">
       <div class="feather">
         <div class="circle border flex items-center justify-center">
@@ -86,7 +113,7 @@
                 <i class="fa fa-star" aria-hidden="true"></i>
                 <i class="fa fa-refresh" aria-hidden="true"> 20</i>
                 <i class="fa fa-ellipsis-h" aria-hidden="true"></i>
-                <img class="heart" src="img/heart.png"></i>
+                <img class="heart" src="img/heart.png" onclick="showAlert()"></i>
               </div>
               <div>
                 <i class="fa fa-expand" aria-hidden="true"></i>
@@ -125,7 +152,7 @@
                 <i class="fa fa-star" aria-hidden="true"></i>
                 <i class="fa fa-refresh" aria-hidden="true"> 20</i>
                 <i class="fa fa-ellipsis-h" aria-hidden="true"></i>
-                <img class="heart" src="img/heart.png"></i>
+                <img class="heart" src="img/heart.png" onclick="showAlert()"></i>
               </div>
               <div>
                 <i class="fa fa-expand" aria-hidden="true"></i>
@@ -163,7 +190,7 @@
                 <i class="fa fa-star" aria-hidden="true"></i>
                 <i class="fa fa-refresh" aria-hidden="true"> 20</i>
                 <i class="fa fa-ellipsis-h" aria-hidden="true"></i>
-                <img class="heart" src="img/heart.png"></i>
+                <img class="heart" src="img/heart.png" onclick="showAlert()"></i>
               </div>
               <div>
                 <i class="fa fa-expand" aria-hidden="true"></i>
